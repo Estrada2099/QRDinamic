@@ -21,23 +21,15 @@
   </div>
 
   <script>
-    // Obtener el ID de la URL actual (temporalmente configurado como 1500)
-    const id = "1500";
+    // Obtener el ID de la URL actual
+    const url = window.location.href;
+    const id = url.split('/').pop();
 
     // Mostrar el ID en la consola
     console.log("ID:", id);
 
     // Redireccionar a la URL correspondiente usando Google Apps Script
-    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
-    const redirectURL = `${AS_URL_BASE}?id=${id}`;
-
-    fetch(redirectURL)
-      .then(response => response.text())
-      .then(data => {
-        console.log("Redirección a:", data);
-        window.location.href = data;
-      })
-      .catch(error => console.error(error));
+    window.location.href = `https://script.google.com/macros/s/ID_DEL_SCRIPT/exec?id=${id}`;
   </script>
 </body>
 </html>
