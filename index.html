@@ -3,25 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>Redirección de URL</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    .loader {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-  </style>
 </head>
 <body>
-  <div class="loader">
-    <div class="spinner-grow" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
+  <h1>Redirección de URL</h1>
+  <form id="redirectForm">
+    <label for="idInput">ID:</label>
+    <input type="text" id="idInput" name="id" placeholder="Ingrese el ID">
+    <button type="submit">Redireccionar</button>
+  </form>
+
+  <div id="result"></div>
 
   <script>
-    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
+    const redirectForm = document.getElementById('redirectForm');
+    const resultDiv = document.getElementById('result');
+
+    redirectForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const id = document.getElementById('idInput').value;
+
+      fetch(`https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec?id=${id}`)
+        .then(response => response.text())
+        .then(data => {
+          resultDiv.innerHTML = data;
+        })
+        .catch(error => {
+          resultDiv.innerHTML = 'Error al obtener los datos.';
+          console.error(error);
+        });
+    });
+  </script>
+</body>
+</html>
+script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
     
     // Obtener el parámetro 'k' de la URL (temporalmente configurado como "1500")
     const k = "1500";
