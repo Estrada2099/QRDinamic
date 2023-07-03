@@ -3,37 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <title>Redirección de URL</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
 </head>
 <body>
-  <h1>Redirección de URL</h1>
-  <form id="redirectForm">
-    <label for="idInput">ID:</label>
-    <input type="text" id="idInput" name="id" placeholder="Ingrese el ID">
-    <button type="submit">Redireccionar</button>
-  </form>
-
-  <div id="result"></div>
+  <div class="loader">
+    <div class="spinner-grow" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
 
   <script>
-  // Obtener el ID de la URL actual (temporalmente configurado como 1500)
-  const id = "1500";
+    // Obtener el ID de la URL actual
+    const url = window.location.href;
+    const id = url.split('/').pop();
 
-  // Mostrar el ID en la consola
-  console.log("ID:", id);
+    // Mostrar el ID en la consola
+    console.log("ID:", id);
 
-  // Redireccionar a la URL correspondiente usando Google Apps Script
-  const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
-  const redirectURL = `${AS_URL_BASE}?id=${id}`;
+    // Construir la URL para la solicitud Fetch
+    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
+    const redirectURL = `${AS_URL_BASE}?id=${id}`;
 
-  fetch(redirectURL)
-    .then(response => response.text())
-    .then(data => {
-      console.log("Redirección a:", data);
-      window.location.href = data;
-    })
-    .catch(error => console.error(error));
-</script>
-
+    // Realizar la solicitud Fetch al servidor de Google Apps Script
+    fetch(redirectURL)
+      .then(response => response.text())
+      .then(data => {
+        console.log("Redirección a:", data);
+        // Verificar si se recibió una URL válida
+        if (data) {
+          // Realizar la redirección a la URL recibida
+          window.location.href = data;
+        } else {
+          // Redireccionar a YouTube si no se recibió una URL válida
+          window.location.href = "https://www.youtube.com";
+        }
+      })
+      .catch(error => console.error(error));
+  </script>
 </body>
 </html>
-
