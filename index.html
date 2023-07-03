@@ -17,12 +17,18 @@
   
 <script>
   // Obtener la URL actual
- var url = document.location.href;
-    var k = url.substr(url.lastIndexOf("k=") + 2);
+  var url = window.location.href;
+
+  // Mostrar la URL en la consola
+  console.log("URL:", url);
+
+  // Extraer el ID de la URL
+  var id = url.substr(url.lastIndexOf("/") + 1);
 
   // Mostrar el ID en la consola
   console.log("ID:", id);
 </script>
+
 <div class="loader">
     <div class="spinner-grow" role="status">
       <span class="visually-hidden">Loading...</span>
