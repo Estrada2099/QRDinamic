@@ -23,9 +23,8 @@
   <script>
     const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
     
-    // Obtener el parámetro 'k' de la URL
-    const url = window.location.href;
-    const k = url.substr(url.lastIndexOf("k=") + 2);
+    // Obtener el parámetro 'k' de la URL (temporalmente configurado como "1500")
+    const k = "1500";
 
     if (k) {
       fetch(AS_URL_BASE + '?k=' + k)
@@ -41,4 +40,3 @@
   </script>
 </body>
 </html>
-
