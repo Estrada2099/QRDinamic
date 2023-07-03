@@ -35,22 +35,4 @@
   </script>
 </body>
 </html>
-script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
-    
-    // Obtener el parámetro 'k' de la URL (temporalmente configurado como "1500")
-    const k = "1500";
 
-    if (k) {
-      fetch(AS_URL_BASE + '?k=' + k)
-        .then(r => r.text())
-        .then((r) => {
-          console.log(r);
-          if (r) {
-            window.location.href = r; // Realizar la redirección completa
-          }
-        })
-        .catch(err => console.log(err));
-    }
-  </script>
-</body>
-</html>
