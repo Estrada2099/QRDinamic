@@ -20,24 +20,24 @@
     </div>
   </div>
 
-<script>
-    // Obtener el ID de prueba
+  <script>
+    // Obtener el ID de la URL actual (temporalmente configurado como 1500)
     const id = "1500";
 
     // Mostrar el ID en la consola
     console.log("ID:", id);
 
-    // Hacer una solicitud HTTP a través de fetch() para obtener la URL de redirección desde Apps Script
-    fetch(`https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec?id=${id}`)
+    // Redireccionar a la URL correspondiente usando Google Apps Script
+    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
+    const redirectURL = `${AS_URL_BASE}?id=${id}`;
+
+    fetch(redirectURL)
       .then(response => response.text())
       .then(data => {
-        // Redirigir a la URL obtenida desde Apps Script
+        console.log("Redirección a:", data);
         window.location.href = data;
       })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+      .catch(error => console.error(error));
   </script>
-
 </body>
 </html>
