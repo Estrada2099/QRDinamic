@@ -17,10 +17,8 @@
   
 <script>
   // Obtener la URL actual
-  var url = window.location.href;
-
-  // Extraer el ID de la URL
-  var id = url.substr(url.lastIndexOf("/") + 1);
+ var url = document.location.href;
+    var k = url.substr(url.lastIndexOf("k=") + 2);
 
   // Mostrar el ID en la consola
   console.log("ID:", id);
