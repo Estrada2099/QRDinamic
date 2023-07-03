@@ -24,6 +24,6 @@ function getUrlParameter(name, url) {
 }
 
 function redirect(id) {
-  var url = 'https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec?k=' + id;
+  var url = 'https://script.google.com/macros/s/AKfycbxTyKZyXNeMMUd9yQjykgPG32pvIooulLcaBCvCrjVANEq_hYMVfkOgjFxQAm7Myew/exec?k=' + id;
   window.location.href = url;
 }
