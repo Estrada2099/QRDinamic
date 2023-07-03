@@ -6,9 +6,11 @@
 </head>
 <body>
   <script>
-    // Obtener el ID de la URL actual
-    const url = window.location.href;
+ const url = window.location.href;
     const id = url.split('/').pop();
+
+    // Mostrar el ID en la consola
+    console.log("ID:", id);
 
     // Redireccionar a la URL correspondiente usando Google Apps Script
     window.location.href = `window.location.href = `https://script.google.com/macros/s/AKfycbyshp8Jo0y_LmhHqLezr04OVLGW_IJeIBkR7o3BWkkQREe9srWFta5pnK0onwlv0OA/exec?id=${id}`;`;
