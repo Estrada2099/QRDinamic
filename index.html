@@ -15,24 +15,25 @@
   <div id="result"></div>
 
   <script>
-    const redirectForm = document.getElementById('redirectForm');
-    const resultDiv = document.getElementById('result');
+  // Obtener el ID de la URL actual (temporalmente configurado como 1500)
+  const id = "1500";
 
-    redirectForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const id = document.getElementById('idInput').value;
+  // Mostrar el ID en la consola
+  console.log("ID:", id);
 
-      fetch(`https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec?id=${id}`)
-        .then(response => response.text())
-        .then(data => {
-          resultDiv.innerHTML = data;
-        })
-        .catch(error => {
-          resultDiv.innerHTML = 'Error al obtener los datos.';
-          console.error(error);
-        });
-    });
-  </script>
+  // Redireccionar a la URL correspondiente usando Google Apps Script
+  const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
+  const redirectURL = `${AS_URL_BASE}?id=${id}`;
+
+  fetch(redirectURL)
+    .then(response => response.text())
+    .then(data => {
+      console.log("Redirección a:", data);
+      window.location.href = data;
+    })
+    .catch(error => console.error(error));
+</script>
+
 </body>
 </html>
 
