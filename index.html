@@ -20,42 +20,23 @@
     </div>
   </div>
 
- <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Redirección de URL</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    .loader {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-  </style>
-</head>
-<body>
-  <div class="loader">
-    <div class="spinner-grow" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
-
   <script>
-    // Obtener el ID de la URL actual (temporalmente configurado como 1500)
-    const id = "1500";
+    // Obtener el ID de la URL actual
+    const url = window.location.href;
+    const id = url.split('/').pop();
 
-    // Mostrar el ID en la consola
-    console.log("ID:", id);
+    // Realizar la solicitud a la función doGet() del script de Google Apps Script
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec'; // Reemplazar con la URL del script de Google Apps Script
+    const redirectURL = `${scriptURL}?id=${id}`;
 
-    // Redireccionar a la URL correspondiente
-    const redirectURL = `https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec?id=${id}`;
-    window.location.href = redirectURL;
+    fetch(redirectURL)
+      .then(response => response.text())
+      .then(data => {
+        console.log("Redirección a:", data);
+        window.location.href = data; // Realizar la redirección completa
+      })
+      .catch(error => console.error(error));
   </script>
-</body>
-</html>
-
 </body>
 </html>
 
