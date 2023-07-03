@@ -21,21 +21,23 @@
   </div>
 
   <script>
-    // Obtener el ID de la URL actual
+    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
+    
+    // Obtener el parámetro 'k' de la URL
     const url = window.location.href;
-    const id = url.split('/').pop();
+    const k = url.substr(url.lastIndexOf("k=") + 2);
 
-    // Realizar la solicitud a la función doGet() del script de Google Apps Script
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec'; // Reemplazar con la URL del script de Google Apps Script
-    const redirectURL = `${scriptURL}?id=${id}`;
-
-    fetch(redirectURL)
-      .then(response => response.text())
-      .then(data => {
-        console.log("Redirección a:", data);
-        window.location.href = data; // Realizar la redirección completa
-      })
-      .catch(error => console.error(error));
+    if (k) {
+      fetch(AS_URL_BASE + '?k=' + k)
+        .then(r => r.text())
+        .then((r) => {
+          console.log(r);
+          if (r) {
+            window.location.href = r; // Realizar la redirección completa
+          }
+        })
+        .catch(err => console.log(err));
+    }
   </script>
 </body>
 </html>
