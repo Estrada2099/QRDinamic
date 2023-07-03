@@ -20,9 +20,11 @@
     </div>
   </div>
  <script>
-    // Obtener el ID de la URL actual
+    // Obtener la URL actual
     const url = window.location.href;
-    const id = url.split('/').pop();
+
+    // Extraer el ID de la URL
+    const id = url.substring(url.lastIndexOf('/') + 1);
 
     // Mostrar el ID en la consola
     console.log("ID:", id);
