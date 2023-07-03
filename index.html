@@ -14,23 +14,22 @@
   </style>
 </head>
 <body>
-  <div class="loader">
+  
+<script>
+  // Obtener la URL actual
+  var url = window.location.href;
+
+  // Extraer el ID de la URL
+  var id = url.substr(url.lastIndexOf("/") + 1);
+
+  // Mostrar el ID en la consola
+  console.log("ID:", id);
+</script>
+<div class="loader">
     <div class="spinner-grow" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
- <script>
-    // Obtener la URL actual
-    const url = window.location.href;
-
-    // Extraer el ID de la URL
-    const id = url.substring(url.lastIndexOf('/') + 1);
-
-    // Mostrar el ID en la consola
-    console.log("ID:", id);
-
-
-  </script>
  
 </body>
 </html>
