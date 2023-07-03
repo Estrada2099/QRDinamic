@@ -2,10 +2,13 @@ window.onload = function() {
   var url = window.location.href;
   var id = getUrlParameter('k', url);
   
+  console.log("URL actual:", url);
+  console.log("ID extraído:", id);
+  
   if (id) {
     redirect(id);
   } else {
-    document.body.innerHTML = "Página no encontrada";
+    document.body.innerHTML = "Página no encontrada de lado de JS";
   }
 };
 
@@ -21,6 +24,6 @@ function getUrlParameter(name, url) {
 }
 
 function redirect(id) {
-  var url = 'https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec?k=' + id; // Reemplaza la URL de tu script de Google Apps Script
+  var url = 'https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec?k=' + id;
   window.location.href = url;
 }
