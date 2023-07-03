@@ -21,14 +21,20 @@
   </div>
 
   <script>
-    // Obtener el valor de k
-    var k = "1500"; // Cambia esto para ajustarlo al valor que necesitas
+  const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec";
+  // const k = "1500";
 
-    // Construir la URL con el parámetro k
-    var url = "https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec?k=" + k;
-
-    // Redireccionar a la URL con el parámetro k
-    window.location.href = url;
+    if (k) {
+      fetch(AS_URL_BASE + '?k=' + k)
+        .then(r => r.text())
+        .then((r) => {
+          console.log(r);
+          if (r) {
+            window.location.href = r; // Realizar la redirección completa
+          }
+        })
+        .catch(err => console.log(err));
+    }
   </script>
 </body>
 </html>
