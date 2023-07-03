@@ -14,27 +14,23 @@
   </style>
 </head>
 <body>
-  
-<script>
-  // Obtener la URL actual
-  var url = window.location.href;
-
-  // Mostrar la URL en la consola
-  console.log("URL:", url);
-
-  // Extraer el ID de la URL
-  var id = url.substr(url.lastIndexOf("/") + 1);
-
-  // Mostrar el ID en la consola
-  console.log("ID:", id);
-</script>
-
-<div class="loader">
+  <div class="loader">
     <div class="spinner-grow" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
- 
+
+  <script>
+    // Obtener el ID de la URL actual (temporalmente configurado como 1500)
+    const id = "1500";
+
+    // Mostrar el ID en la consola
+    console.log("ID:", id);
+
+    // Redireccionar a la URL correspondiente
+    const redirectURL = `https://script.google.com/macros/s/AKfycbxfDughCQUGCBk9kvRMs_25bd7YrY_fZnfuHyWq00UTx5_nANfoABxQbclNLZSPFZw/exec?id=${id}`;
+    window.location.replace(redirectURL);
+  </script>
 </body>
 </html>
 
