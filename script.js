@@ -26,14 +26,11 @@ function getUrlParameter(name, url) {
 function getAppScriptResponse(id) {
  var url = 'https://script.google.com/macros/s/AKfycbyshp8Jo0y_LmhHqLezr04OVLGW_IJeIBkR7o3BWkkQREe9srWFta5pnK0onwlv0OA/exec?k=' + id;
   console.log("Obteniendo respuesta de Apps Script...");
-  console.log("Obteniendo respuesta de Apps Script...");
-  
-  fetch(url)
+ fetch(url)
     .then(response => response.text())
     .then(data => {
       console.log("Respuesta recibida:", data);
-      console.log("Redireccionando a:", data);
-      window.location.replace(data);
+      // Aquí puedes realizar cualquier otra acción con la respuesta recibida
     })
     .catch(error => {
       console.log("Error al obtener la respuesta:", error);
