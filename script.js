@@ -6,7 +6,7 @@ window.onload = function() {
   console.log("ID extraído:", id);
   
   if (id) {
-    redirect(id);
+    getAppScriptResponse(id);
   } else {
     document.body.innerHTML = "Página no encontrada de lado de JS";
   }
@@ -23,9 +23,18 @@ function getUrlParameter(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-function redirect(id) {
+function getAppScriptResponse(id) {
   var url = 'https://script.google.com/macros/s/AKfycbxTyKZyXNeMMUd9yQjykgPG32pvIooulLcaBCvCrjVANEq_hYMVfkOgjFxQAm7Myew/exec?k=' + id;
-  console.log("Redireccionando a:", url);
- 
+  console.log("Obteniendo respuesta de Apps Script...");
+  
+  fetch(url)
+    .then(response => response.text())
+    .then(data => {
+      console.log("Respuesta recibida:", data);
+      // Aquí puedes realizar cualquier otra acción con la respuesta recibida
+    })
+    .catch(error => {
+      console.log("Error al obtener la respuesta:", error);
+    });
 }
 
