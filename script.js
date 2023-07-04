@@ -31,10 +31,10 @@ function getAppScriptResponse(id) {
     .then(response => response.text())
     .then(data => {
       console.log("Respuesta recibida:", data);
-      // Aquí puedes realizar cualquier otra acción con la respuesta recibida
+      console.log("Redireccionando a:", data);
+      window.location.replace(data);
     })
     .catch(error => {
       console.log("Error al obtener la respuesta:", error);
     });
 }
-
