@@ -6,7 +6,7 @@ window.onload = function() {
   console.log("ID extraído:", id);
   
   if (id) {
-    console.log("Este es el link de Apps Script perro!:", id);
+    redirect(id);
   } else {
     document.body.innerHTML = "Página no encontrada de lado de JS";
   }
@@ -22,8 +22,10 @@ function getUrlParameter(name, url) {
   
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
 function redirect(id) {
   var url = 'https://script.google.com/macros/s/AKfycbxTyKZyXNeMMUd9yQjykgPG32pvIooulLcaBCvCrjVANEq_hYMVfkOgjFxQAm7Myew/exec?k=' + id;
   console.log("Redireccionando a:", url);
-  
+ 
 }
+
