@@ -6,7 +6,7 @@ window.onload = function() {
   console.log("ID extraído:", id);
   
   if (id) {
-    requestRedirectUrl(id);
+    redirect(id);
   } else {
     document.body.innerHTML = "Página no encontrada de lado de JS";
   }
@@ -23,26 +23,8 @@ function getUrlParameter(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-function requestRedirectUrl(id) {
-  var request = new XMLHttpRequest();
+function redirect(id) {
   var url = 'https://script.google.com/macros/s/AKfycbxTyKZyXNeMMUd9yQjykgPG32pvIooulLcaBCvCrjVANEq_hYMVfkOgjFxQAm7Myew/exec?k=' + id;
-  
-  request.open('GET', url, true);
-  
-  request.onreadystatechange = function() {
-    if (request.readyState === 4 && request.status === 200) {
-      var redirectUrl = request.responseText;
-      console.log("URL de redirección recibida:", redirectUrl);
-      redirect(redirectUrl);
-    } else if (request.readyState === 4) {
-      console.log("Error al obtener la URL de redirección");
-    }
-  };
-  
-  request.send();
-}
-
-function redirect(url) {
+  console.log("Redireccionando a:", url);
   window.location.replace(url);
 }
-
