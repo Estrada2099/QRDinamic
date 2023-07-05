@@ -1,18 +1,3 @@
-function getAppScriptResponse(id) {
-  var url = 'https://script.google.com/macros/s/AKfycbyshp8Jo0y_LmhHqLezr04OVLGW_IJeIBkR7o3BWkkQREe9srWFta5pnK0onwlv0OA/exec?k=' + id;
-  console.log("Obteniendo respuesta de Apps Script...");
-  
-  fetch(url)
-    .then(response => response.text())
-    .then(data => {
-      console.log("Respuesta recibida:", data);
-      // Aquí puedes realizar cualquier otra acción con la respuesta recibida
-    })
-    .catch(error => {
-      console.log("Error al obtener la respuesta:", error);
-    });
-}
-
 window.onload = function() {
   var url = window.location.href;
   var id = getUrlParameter('k', url);
@@ -36,4 +21,20 @@ function getUrlParameter(name, url) {
   if (!results[2]) return '';
   
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function getAppScriptResponse(id) {
+  var url = 'https://script.google.com/macros/s/AKfycbxTyKZyXNeMMUd9yQjykgPG32pvIooulLcaBCvCrjVANEq_hYMVfkOgjFxQAm7Myew/exec?k=' + id;
+  console.log("Obteniendo respuesta de Apps Script...");
+  
+  fetch(url)
+    .then(response => response.text())
+    .then(data => {
+      console.log("Respuesta recibida:", data);
+      console.log("Redireccionando a:", data);
+      window.location.replace(data);
+    })
+    .catch(error => {
+      console.log("Error al obtener la respuesta:", error);
+    });
 }
