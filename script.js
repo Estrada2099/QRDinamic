@@ -24,7 +24,7 @@ function getUrlParameter(name, url) {
 }
 
 function getAppScriptResponse(id) {
-  var url = 'https://script.google.com/macros/s/AKfycbyyjaKpS9zYSOqz75n30_JU31dTA0TjiyN28ivW0KV6S32Q6RndcbXRRhvj_ftiR-s/exec?k=' + id;
+  var url = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbws8Vwxmz-BWtt4CounPjhSKWu96pqxdpCVnPSKOKVnS4I6s89ynLi7R5RWXcl1zOc/exec?k=' + id;
   console.log("Obteniendo respuesta de Apps Script...");
   
   fetch(url)
